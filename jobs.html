@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospitality Jobs UK | HOSPO Recruitment</title>
+<meta name="description" content="Browse premium hospitality jobs across the UK. Chefs, managers, front of house, hotels and restaurants. Apply directly with HOSPO.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --primary:#0B1F3B;
+  --primary-light:#1E4ED8;
+  --accent:#C7A14A;
+  --bg:#F8FAFC;
+  --text:#0F172A;
+  --muted:#64748B;
+  --radius:12px;
+  --shadow:0 6px 18px rgba(0,0,0,.08);
+  --container:1200px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+.container{
+  width:92%;
+  max-width:var(--container);
+  margin:auto;
+}
+h1,h2,h3{margin-top:0}
+
+/* =========================
+   NAV
+========================= */
+header{
+  background:#fff;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+.logo{
+  font-weight:700;
+  font-size:1.2rem;
+  color:var(--primary);
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+  background:linear-gradient(135deg,#0B1F3B,#1E4ED8);
+  color:#fff;
+  padding:70px 0;
+}
+.hero h1{
+  font-size:clamp(1.8rem,4vw,2.5rem);
+}
+.hero p{
+  opacity:.9;
+}
+
+/* =========================
+   FILTERS
+========================= */
+.filters{
+  background:#fff;
+  padding:25px;
+  border-radius:var(--radius);
+  margin-top:-40px;
+  box-shadow:var(--shadow);
+  display:grid;
+  gap:15px;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+.filters input,
+.filters select{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:.9rem;
+}
+
+/* =========================
+   JOB GRID
+========================= */
+.jobs-grid{
+  margin-top:40px;
+  display:grid;
+  gap:20px;
+}
+.job-card{
+  background:#fff;
+  padding:20px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  transition:.3s ease;
+}
+.job-card:hover{
+  transform:translateY(-4px);
+}
+.job-meta{
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:40px 0;
+}
+.pagination button{
+  padding:8px 14px;
+  border:none;
+  border-radius:8px;
+  background:#fff;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.pagination button.active{
+  background:var(--primary);
+  color:#fff;
+}
+
+/* =========================
+   MODALS
+========================= */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:2000;
+}
+.modal-content{
+  background:#fff;
+  padding:30px;
+  border-radius:var(--radius);
+  max-width:600px;
+  width:100%;
+  max-height:90vh;
+  overflow:auto;
+  position:relative;
+}
+.close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* =========================
+   FORM
+========================= */
+form input,form textarea{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+.btn{
+  padding:10px 16px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+.btn-accent{
+  background:var(--accent);
+  color:var(--primary);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+  .filters{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">HOSPO</div>
+    <div>Premium UK Hospitality Recruitment</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Browse Hospitality Jobs Across the UK</h1>
+    <p>Find your next opportunity in restaurants, hotels and events.</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="filters">
+    <input type="text" id="search" placeholder="Search job title...">
+    <select id="category">
+      <option value="">All Categories</option>
+      <option>Chef</option>
+      <option>Front of House</option>
+      <option>Management</option>
+    </select>
+    <select id="location">
+      <option value="">All Locations</option>
+      <option>London</option>
+      <option>Manchester</option>
+      <option>Birmingham</option>
+    </select>
+    <select id="salary">
+      <option value="">All Salaries</option>
+      <option value="30000">£30k+</option>
+      <option value="40000">£40k+</option>
+      <option value="50000">£50k+</option>
+    </select>
+    <select id="sort">
+      <option value="newest">Newest</option>
+      <option value="salary">Highest Salary</option>
+    </select>
+  </div>
+
+  <div class="jobs-grid" id="jobsGrid"></div>
+  <div class="pagination" id="pagination"></div>
+</section>
+
+<!-- JOB MODAL -->
+<div class="modal" id="jobModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('jobModal')">&times;</span>
+    <div id="jobDetails"></div>
+    <button class="btn btn-accent" onclick="openModal('applyModal')">Apply Now</button>
+  </div>
+</div>
+
+<!-- APPLY MODAL -->
+<div class="modal" id="applyModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('applyModal')">&times;</span>
+    <h3>Apply for this Position</h3>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea placeholder="Cover Message"></textarea>
+      <button type="submit" class="btn btn-primary">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<script>
+/* =========================
+   JOB DATA (Mock API)
+========================= */
+const jobs = [
+  {id:1,title:"Head Chef",category:"Chef",location:"London",salary:55000,date:"2025-02-10"},
+  {id:2,title:"Restaurant Manager",category:"Management",location:"Manchester",salary:48000,date:"2025-02-15"},
+  {id:3,title:"Sous Chef",category:"Chef",location:"Birmingham",salary:42000,date:"2025-01-20"},
+  {id:4,title:"Front of House Supervisor",category:"Front of House",location:"London",salary:32000,date:"2025-02-12"},
+  {id:5,title:"Hotel Operations Manager",category:"Management",location:"London",salary:60000,date:"2025-02-01"},
+  {id:6,title:"Pastry Chef",category:"Chef",location:"Manchester",salary:38000,date:"2025-01-28"}
+];
+
+const jobsPerPage = 4;
+let currentPage = 1;
+let filteredJobs = [...jobs];
+
+/* =========================
+   FILTERING
+========================= */
+function applyFilters(){
+  const search = document.getElementById("search").value.toLowerCase();
+  const category = document.getElementById("category").value;
+  const location = document.getElementById("location").value;
+  const salary = document.getElementById("salary").value;
+  const sort = document.getElementById("sort").value;
+
+  filteredJobs = jobs.filter(job=>{
+    return (
+      job.title.toLowerCase().includes(search) &&
+      (!category || job.category===category) &&
+      (!location || job.location===location) &&
+      (!salary || job.salary>=salary)
+    );
+  });
+
+  if(sort==="salary"){
+    filteredJobs.sort((a,b)=>b.salary-a.salary);
+  } else {
+    filteredJobs.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  }
+
+  currentPage=1;
+  renderJobs();
+}
+
+/* =========================
+   RENDER JOBS
+========================= */
+function renderJobs(){
+  const grid=document.getElementById("jobsGrid");
+  const pagination=document.getElementById("pagination");
+  grid.innerHTML="";
+  pagination.innerHTML="";
+
+  const start=(currentPage-1)*jobsPerPage;
+  const paginated=filteredJobs.slice(start,start+jobsPerPage);
+
+  paginated.forEach(job=>{
+    const card=document.createElement("div");
+    card.className="job-card";
+    card.innerHTML=`
+      <h3>${job.title}</h3>
+      <div class="job-meta">${job.location} • £${job.salary.toLocaleString()}</div>
+    `;
+    card.onclick=()=>openJob(job);
+    grid.appendChild(card);
+  });
+
+  const totalPages=Math.ceil(filteredJobs.length/jobsPerPage);
+  for(let i=1;i<=totalPages;i++){
+    const btn=document.createElement("button");
+    btn.textContent=i;
+    if(i===currentPage) btn.classList.add("active");
+    btn.onclick=()=>{currentPage=i;renderJobs();}
+    pagination.appendChild(btn);
+  }
+}
+
+/* =========================
+   MODALS
+========================= */
+function openJob(job){
+  document.getElementById("jobDetails").innerHTML=`
+    <h2>${job.title}</h2>
+    <p><strong>Location:</strong> ${job.location}</p>
+    <p><strong>Salary:</strong> £${job.salary.toLocaleString()}</p>
+    <p>Lorem ipsum dolor sit amet, premium hospitality venue seeking exceptional talent.</p>
+  `;
+  openModal("jobModal");
+}
+
+function openModal(id){
+  document.getElementById(id).style.display="flex";
+}
+function closeModal(id){
+  document.getElementById(id).style.display="none";
+}
+
+/* =========================
+   EVENTS
+========================= */
+document.querySelectorAll(".filters input, .filters select")
+  .forEach(el=>el.addEventListener("input",applyFilters));
+
+renderJobs();
+</script>
+
+</body>
+</html>
