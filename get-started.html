@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started | HOSPO Hospitality Recruitment</title>
+<meta name="description" content="Start your journey with HOSPO. Hire premium hospitality staff or find your next opportunity across the UK.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0B1F3B;
+  --primary-light:#1E4ED8;
+  --accent:#C7A14A;
+  --bg:#F8FAFC;
+  --text:#0F172A;
+  --muted:#64748B;
+  --radius:14px;
+  --shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+.container{
+  width:92%;
+  max-width:800px;
+  margin:auto;
+  padding:60px 0;
+}
+
+/* HEADER */
+header{
+  text-align:center;
+  margin-bottom:40px;
+}
+header h1{
+  font-size:clamp(1.8rem,4vw,2.5rem);
+}
+
+/* SPLIT PATH */
+.split{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  margin-bottom:40px;
+}
+.path-card{
+  background:#fff;
+  padding:30px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  text-align:center;
+  cursor:pointer;
+  transition:.3s ease;
+}
+.path-card:hover{
+  transform:translateY(-5px);
+}
+.path-card.active{
+  border:2px solid var(--primary);
+}
+
+/* FORM */
+form{
+  background:#fff;
+  padding:30px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  display:none;
+}
+.step{
+  display:none;
+}
+.step.active{
+  display:block;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:16px;
+  border-radius:8px;
+  border:1px solid #ddd;
+}
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+.btn-accent{
+  background:var(--accent);
+  color:var(--primary);
+}
+
+/* PROGRESS BAR */
+.progress{
+  height:8px;
+  background:#eee;
+  border-radius:4px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:var(--primary);
+  transition:.4s ease;
+}
+
+/* GDPR */
+.gdpr{
+  font-size:.85rem;
+  color:var(--muted);
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+}
+
+/* THANK YOU */
+.thank-you{
+  display:none;
+  text-align:center;
+  padding:40px;
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.thank-you h2{
+  color:var(--primary);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Let’s Get Started</h1>
+  <p>Tell us what you need — we’ll take care of the rest.</p>
+</header>
+
+<!-- SPLIT PATH -->
+<div class="split">
+  <div class="path-card" onclick="selectPath('hire')">
+    <h3>Hire Staff</h3>
+    <p>Find exceptional hospitality professionals.</p>
+  </div>
+  <div class="path-card" onclick="selectPath('job')">
+    <h3>Find a Job</h3>
+    <p>Discover your next opportunity in hospitality.</p>
+  </div>
+</div>
+
+<!-- MULTI STEP FORM -->
+<form id="multiForm">
+
+<div class="progress">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step active">
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="email" id="email" placeholder="Email Address" required>
+  <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div id="dynamicFields"></div>
+  <button type="button" onclick="prevStep()">Back</button>
+  <button type="button" class="btn-primary" onclick="nextStep()">Next</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <textarea id="message" placeholder="Tell us more about your requirements..."></textarea>
+
+  <div class="gdpr">
+    <input type="checkbox" id="gdpr">
+    <label for="gdpr">
+      I consent to HOSPO storing my information in accordance with GDPR regulations.
+    </label>
+  </div>
+
+  <button type="button" onclick="prevStep()">Back</button>
+  <button type="button" class="btn-accent" onclick="submitForm()">Submit</button>
+</div>
+
+</form>
+
+<!-- THANK YOU SCREEN -->
+<div class="thank-you" id="thankYou">
+  <h2>Thank You!</h2>
+  <p>Our team will contact you within 24 hours.</p>
+</div>
+
+</div>
+
+<script>
+let currentStep=0;
+let selectedPath=null;
+const steps=document.querySelectorAll(".step");
+const form=document.getElementById("multiForm");
+const progressBar=document.getElementById("progressBar");
+
+/* SELECT PATH */
+function selectPath(path){
+  selectedPath=path;
+  document.querySelectorAll(".path-card")
+    .forEach(card=>card.classList.remove("active"));
+  event.currentTarget.classList.add("active");
+  form.style.display="block";
+
+  const dynamic=document.getElementById("dynamicFields");
+  dynamic.innerHTML="";
+
+  if(path==="hire"){
+    dynamic.innerHTML=`
+      <input type="text" placeholder="Company Name" required>
+      <select required>
+        <option value="">Role Type</option>
+        <option>Chef</option>
+        <option>Manager</option>
+        <option>Front of House</option>
+      </select>
+    `;
+  } else {
+    dynamic.innerHTML=`
+      <input type="text" placeholder="Desired Role" required>
+      <select required>
+        <option value="">Preferred Location</option>
+        <option>London</option>
+        <option>Manchester</option>
+        <option>Birmingham</option>
+      </select>
+    `;
+  }
+}
+
+/* STEP NAVIGATION */
+function showStep(index){
+  steps.forEach((step,i)=>{
+    step.classList.toggle("active",i===index);
+  });
+  progressBar.style.width=((index)/(steps.length-1))*100+"%";
+}
+function nextStep(){
+  if(!validateStep()) return;
+  if(currentStep<steps.length-1){
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+function prevStep(){
+  if(currentStep>0){
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+/* VALIDATION */
+function validateStep(){
+  const activeStep=steps[currentStep];
+  const inputs=activeStep.querySelectorAll("input[required], select[required]");
+  for(let input of inputs){
+    if(!input.value){
+      input.style.border="2px solid red";
+      return false;
+    } else {
+      input.style.border="1px solid #ddd";
+    }
+  }
+  return true;
+}
+
+/* SUBMIT */
+function submitForm(){
+  if(!document.getElementById("gdpr").checked){
+    alert("Please accept GDPR consent.");
+    return;
+  }
+  form.style.display="none";
+  document.getElementById("thankYou").style.display="block";
+}
+</script>
+
+</body>
+</html>
