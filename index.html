@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOSPO | Premium UK Hospitality Recruitment</title>
+  <meta name="description" content="HOSPO is a premium UK-wide hospitality recruitment agency connecting elite venues with exceptional talent." />
+  <meta name="keywords" content="UK hospitality recruitment, chef jobs UK, hospitality staff hiring, restaurant recruitment agency UK" />
+  <link rel="canonical" href="https://www.hospo.co.uk/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HOSPO | UK Hospitality Recruitment" />
+  <meta property="og:description" content="Connecting premium venues with exceptional hospitality talent across the UK." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+/* =====================
+   CSS VARIABLES
+===================== */
+:root {
+  --color-primary: #0B1F3B;
+  --color-primary-light: #1E4ED8;
+  --color-accent: #C7A14A;
+  --color-bg-light: #F8FAFC;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #64748B;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-1: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-2: 0 8px 24px rgba(0,0,0,0.12);
+  --transition: 0.3s ease;
+  --container: 1140px;
+}
+
+/* =====================
+   RESET & BASE
+===================== */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-dark);
+  background: #fff;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: 90%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: var(--shadow-1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.nav__logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+}
+
+.nav__menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav__menu a {
+  font-weight: 500;
+  position: relative;
+}
+
+.nav__menu a:hover {
+  color: var(--color-primary-light);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 180px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: flex;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn {
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.btn-accent:hover {
+  opacity: 0.9;
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  background: linear-gradient(135deg, #0B1F3B, #1E4ED8);
+  color: #fff;
+  padding: 120px 0;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 24px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 32px;
+  opacity: 0.9;
+}
+
+.hero .btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section {
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* =====================
+   GRID
+===================== */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+.card {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-2);
+}
+
+/* =====================
+   TIMELINE
+===================== */
+.timeline {
+  display: grid;
+  gap: 24px;
+}
+
+.timeline-step {
+  padding: 16px;
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-bg-light);
+  border-radius: var(--radius-md);
+}
+
+/* =====================
+   TESTIMONIALS
+===================== */
+.testimonials {
+  text-align: center;
+  position: relative;
+}
+
+.testimonial {
+  display: none;
+}
+
+.testimonial.active {
+  display: block;
+}
+
+/* =====================
+   FAQ
+===================== */
+.faq-item {
+  border-bottom: 1px solid #eee;
+  padding: 16px 0;
+}
+
+.faq-question {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq-answer {
+  display: none;
+  padding-top: 8px;
+  color: var(--color-text-muted);
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 60px 0;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+footer a {
+  color: #fff;
+  opacity: 0.8;
+}
+
+footer a:hover {
+  opacity: 1;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+  .nav__menu {
+    display: none;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="nav__logo">HOSPO</div>
+    <nav class="nav__menu">
+      <a href="#">Home</a>
+      <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-menu">
+          <a href="#">Hire Staff</a>
+          <a href="#">Find Jobs</a>
+        </div>
+      </div>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#" class="btn btn-accent">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <h1>Premium UK Hospitality Recruitment</h1>
+    <p>Connecting exceptional hospitality talent with leading venues across the United Kingdom.</p>
+    <div class="btn-group">
+      <a href="#" class="btn btn-accent">Hire Staff</a>
+      <a href="#" class="btn btn-primary">Find a Job</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container section-title">
+    <h2>Trusted by Leading Hospitality Brands</h2>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Our Services</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card"><h3>Executive Search</h3><p>Premium chef and management placements.</p></div>
+      <div class="card"><h3>Permanent Staffing</h3><p>Reliable long-term recruitment solutions.</p></div>
+      <div class="card"><h3>Temporary Staff</h3><p>Flexible staffing when you need it most.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>How It Works</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step">1. Consultation</div>
+      <div class="timeline-step">2. Talent Search</div>
+      <div class="timeline-step">3. Screening</div>
+      <div class="timeline-step">4. Placement</div>
+      <div class="timeline-step">5. Ongoing Support</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title">
+      <h2>Client Testimonials</h2>
+    </div>
+    <div class="testimonial active">
+      <p>"HOSPO transformed our recruitment process."</p>
+      <strong>— London Restaurant Group</strong>
+    </div>
+    <div class="testimonial">
+      <p>"Exceptional service and outstanding candidates."</p>
+      <strong>— Manchester Hotel Collection</strong>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Sectors We Cover</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">Restaurants</div>
+      <div class="card">Hotels</div>
+      <div class="card">Events</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>FAQs</h2>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How quickly can you fill a role?</div>
+      <div class="faq-answer">Most placements are completed within 2-4 weeks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do you operate UK-wide?</div>
+      <div class="faq-answer">Yes, we recruit across the entire UK.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--color-primary); color:#fff; text-align:center;">
+  <div class="container">
+    <h2>Ready to Elevate Your Hospitality Team?</h2>
+    <a href="#" class="btn btn-accent">Get Started Today</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>HOSPO</h4>
+      <p>Premium UK hospitality recruitment.</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#">About</a><br/>
+      <a href="#">Jobs</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a><br/>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Testimonials Slider */
+let testimonials = document.querySelectorAll('.testimonial');
+let index = 0;
+setInterval(() => {
+  testimonials[index].classList.remove('active');
+  index = (index + 1) % testimonials.length;
+  testimonials[index].classList.add('active');
+}, 5000);
+
+/* FAQ Accordion */
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>
