@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About HOSPO | Premium UK Hospitality Recruitment</title>
+  <meta name="description" content="Learn about HOSPO — a premium UK-wide hospitality recruitment company connecting exceptional talent with leading venues." />
+  <link rel="canonical" href="https://www.hospo.co.uk/about" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About HOSPO | UK Hospitality Recruitment Experts" />
+  <meta property="og:description" content="Discover our mission, leadership and commitment to raising recruitment standards in the UK hospitality industry." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+/* =====================
+   DESIGN TOKENS
+===================== */
+:root {
+  --primary: #0B1F3B;
+  --primary-light: #1E4ED8;
+  --accent: #C7A14A;
+  --bg-light: #F8FAFC;
+  --text-dark: #0F172A;
+  --text-muted: #64748B;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-1: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-2: 0 12px 32px rgba(0,0,0,0.12);
+  --container: 1140px;
+  --transition: 0.3s ease;
+}
+
+/* =====================
+   RESET
+===================== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background: #fff;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+.container {
+  width: 90%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+section { padding: 90px 0; }
+
+/* =====================
+   NAV
+===================== */
+header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  box-shadow: var(--shadow-1);
+  z-index: 1000;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-links a:hover {
+  color: var(--primary-light);
+}
+.btn {
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: var(--transition);
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--primary-light);
+}
+.btn-accent {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+/* =====================
+   HERO
+===================== */
+.hero {
+  background: linear-gradient(135deg, #0B1F3B, #1E4ED8);
+  color: #fff;
+  text-align: center;
+  padding: 120px 0;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 20px;
+}
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  opacity: 0.9;
+}
+
+/* =====================
+   STORY SECTION
+===================== */
+.story {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  align-items: center;
+}
+.story img {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-2);
+}
+
+/* =====================
+   MISSION / VISION
+===================== */
+.mission-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+}
+
+/* =====================
+   TEAM
+===================== */
+.team-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.team-card {
+  text-align: center;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+}
+.team-card img {
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+/* =====================
+   STATS
+===================== */
+.stats {
+  background: var(--bg-light);
+}
+.stats-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  text-align: center;
+}
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* =====================
+   AWARDS
+===================== */
+.awards-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  text-align: center;
+}
+.award {
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid #eee;
+}
+
+/* =====================
+   CTA
+===================== */
+.cta {
+  background: var(--primary);
+  color: #fff;
+  text-align: center;
+}
+.cta h2 { margin-bottom: 24px; }
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  background: #0F172A;
+  color: #fff;
+  padding: 60px 0;
+}
+.footer-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+footer a { opacity: 0.8; }
+footer a:hover { opacity: 1; }
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media(max-width:768px){
+  .nav-links { display:none; }
+}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">HOSPO</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="btn btn-accent">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <h1>Setting the Standard in Hospitality Recruitment</h1>
+    <p>HOSPO was built to elevate recruitment standards across the UK hospitality sector — combining precision, discretion and industry expertise.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container story">
+    <div>
+      <h2>Our Story</h2>
+      <p>Founded to address the growing demand for high-quality hospitality professionals, HOSPO bridges the gap between elite venues and exceptional talent.</p>
+      <p>We combine sector expertise with modern recruitment methodology to deliver placements that last.</p>
+    </div>
+    <img src="https://images.unsplash.com/photo-1555992336-03a23c3b0c04?q=80&w=1000" alt="Hospitality professional kitchen environment" loading="lazy">
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-number">500+</div><p>Successful Placements</p></div>
+      <div><div class="stat-number">98%</div><p>Client Retention</p></div>
+      <div><div class="stat-number">UK Wide</div><p>National Coverage</p></div>
+      <div><div class="stat-number">10+ Years</div><p>Industry Experience</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container mission-grid">
+    <div class="card">
+      <h3>Our Mission</h3>
+      <p>To raise recruitment standards across the UK hospitality industry by delivering exceptional talent and long-term placements.</p>
+    </div>
+    <div class="card">
+      <h3>Our Vision</h3>
+      <p>To become the most trusted hospitality recruitment partner nationwide — known for quality, integrity and results.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:50px;">Founder Message</h2>
+    <div class="story">
+      <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=800" alt="Founder portrait" loading="lazy">
+      <div>
+        <p>“HOSPO was created with one goal: to redefine hospitality recruitment. We believe exceptional venues deserve exceptional people — and that precision hiring transforms businesses.”</p>
+        <strong>— Founder & Director</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:50px;">Our Leadership Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=1" alt="Team member" loading="lazy">
+        <h4>Sarah Mitchell</h4>
+        <p>Managing Director</p>
+      </div>
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=2" alt="Team member" loading="lazy">
+        <h4>James Carter</h4>
+        <p>Head of Recruitment</p>
+      </div>
+      <div class="team-card">
+        <img src="https://i.pravatar.cc/150?img=3" alt="Team member" loading="lazy">
+        <h4>Emily Thompson</h4>
+        <p>Senior Consultant</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:50px;">Awards & Certifications</h2>
+    <div class="awards-grid">
+      <div class="award">REC Member</div>
+      <div class="award">Hospitality Excellence Award</div>
+      <div class="award">Best Recruitment Partner 2024</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Partner with HOSPO Today</h2>
+    <a href="contact.html" class="btn btn-accent">Start Your Journey</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <h4>HOSPO</h4>
+      <p>Premium UK Hospitality Recruitment</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="about.html">About</a><br>
+      <a href="jobs.html">Jobs</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a><br>
+      <a href="#">Terms</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
